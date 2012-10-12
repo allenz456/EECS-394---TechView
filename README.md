@@ -3,6 +3,9 @@ EECS-394---TechView
 
 Making Tech more accessible for all
 
+http://techview.herokuapp.com/
+
+
 Team Member Contact Information:
 
 Allen Zeng - AllenZeng2014@u.northwestern.edu, 917-815-9522
