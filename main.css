@@ -1,0 +1,53 @@
+body, html
+{
+	height: 95%;
+}
+
+.floor_button
+{
+	color: black;
+	background-color: green;
+	text-align: center;
+	height: 10%;
+	margin: 5px;
+}
+
+#body_div
+{
+	font-size: 2em;
+	text-align: center;
+}
+
+#title
+{
+	height: 15%;
+	font-weight: bold;
+}
+
+#home_button
+{
+	height: 10%;
+	background-color: blue;
+}
+
+
+
+/* FOR LABELING ROOMS */
+
+#room_label
+{
+	display: none;
+	font-size: .5em;
+	color: red;
+	position: absolute
+}
+
+#room_label_form
+{
+	display: none;
+	position: absolute;
+	background-color: white;
+	border-style: solid;
+	padding: 10px;
+	font-size: .5em;
+}
