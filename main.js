@@ -4,7 +4,7 @@ var select_floor_string;
 
 function show_floor(floor_number)
 {
-	document.getElementById('select_floor').innerHTML = "<img height='100%' onclick='add_room_name(this)' src='tech_maps/" + floor_number + ".png'/>";
+	document.getElementById('select_floor').innerHTML = "<img width='100%' onclick='add_room_name(this)' src='tech_maps/" + floor_number + ".png'/>";
 }
 
 function load_home()
