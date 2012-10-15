@@ -22,18 +22,18 @@
 <div data-role="header" id='title'>Welcome to TechView!</div><!-- /header -->
 
 <!-- HOME BUTTON -->
-<div class='home_button' data-role="button" onclick='load_home()' id='home_button'>Home</div>
+<div class='home_button' data-role="button" onclick='load_home(); hide_label_containers()' id='home_button'>Home</div>
 
 <div id='test'></div>
 <!-- lable_container includes a list of divs that will be filled depending on the needs of the user -->
 <div id='label_container'>
-	<div id='room_label'>ROOM LABEL</div>
+	<div id='room_label_container'></div>
 	<div id='room_label_form'></div>
 </div>
 
 <!-- SELECT BUTTONS -->
 <span id='select_floor'>
-	<div data-role="content">Select a floor:</div><!-- /content -->
+	<div data-role="content">Select a floor:</div>
 	<div data-role="controlgroup">
 		<div class='floor_button' data-role="button" onclick='show_floor(0)'>Ground Floor</div>
 		<div class='floor_button' data-role="button" onclick='show_floor(1)'>First Floor</div>

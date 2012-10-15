@@ -1,12 +1,5 @@
 <?php
 
-
-$room_name = $_REQUEST['room_name'];
-$room_coord_x = $_REQUEST['room_coord_x'];
-$room_coord_y = $_REQUEST['room_coord_y'];
-$floor = $_REQUEST['floor'];
-$msg = "Room Name: " . $room_name . "<br>X coordinate: " . $room_coord_x . "<br>Y coordinate: " . $room_coord_y;
-
 // Open connection to DB
 $my_connection = mysql_connect('techview.cx3h6ibh7nag.us-east-1.rds.amazonaws.com', 'eecs394techview', 'showmetech') or die('Could not connect: ' . mysql_error()); // THIS WILL NEED TO CHANGE
 
@@ -29,10 +22,15 @@ $room_column5 = 'db_room_id';
 $room_column6 = 'other_info';
 	$room_column6_type = 'varchar(255)';
 
+$room_data_array = array();
+$room_data_query = mysql_query("SELECT * FROM " . $room_table_name);
+while($room_data_hold = mysql_fetch_array($room_data_query))
+{
+	array_push($room_data_array, $room_data_hold);
+}
 
-mysql_query("INSERT INTO " . $room_table_name . " (" . $room_column1 . ", " . $room_column2 . ", " . $room_column3 . ", " . $room_column4 . ") VALUES ('" . $room_name . "', '" . $room_coord_x . "', '" . $room_coord_y . "', '" . $floor . "')");
+$room_data_json = json_encode($room_data_array);
 
+echo $room_data_json;
 
 ?>
-
-<script language="javascript" type="text/javascript">window.top.window.msg_from_ajax("<?php echo $msg; ?>");</script>   

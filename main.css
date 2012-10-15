@@ -8,7 +8,7 @@ body, html
 	color: black;
 	background-color: green;
 	text-align: center;
-	height: 10%;
+	height: 20%;
 	margin: 5px;
 }
 
@@ -34,12 +34,18 @@ body, html
 
 /* FOR LABELING ROOMS */
 
-#room_label
+#room_label_container
 {
-	display: none;
-	font-size: .5em;
+	/*display: none;*/
 	color: red;
-	position: absolute
+	font-size: .5em;
+	/*position: absolute;*/
+	z-index: 20;
+}
+
+.room_label_divs
+{
+	position: absolute;
 }
 
 #room_label_form
