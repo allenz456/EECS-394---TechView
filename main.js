@@ -122,7 +122,7 @@ function add_room_to_database()
     {
         if(xmlHttp.readyState == 4)
         {
-            document.getElementById('test').innerHTML = xmlHttp.responseText;
+            // document.getElementById('test').innerHTML = xmlHttp.responseText;
         }
     }
 

@@ -5,7 +5,7 @@ $room_name = $_REQUEST['room_name'];
 $room_coord_x = $_REQUEST['room_coord_x'];
 $room_coord_y = $_REQUEST['room_coord_y'];
 $floor = $_REQUEST['floor'];
-$msg = "Room Name: " . $room_name . "<br>X coordinate: " . $room_coord_x . "<br>Y coordinate: " . $room_coord_y;
+// $msg = "Room Name: " . $room_name . "<br>X coordinate: " . $room_coord_x . "<br>Y coordinate: " . $room_coord_y;
 
 // Open connection to DB
 $my_connection = mysql_connect('techview.cx3h6ibh7nag.us-east-1.rds.amazonaws.com', 'eecs394techview', 'showmetech') or die('Could not connect: ' . mysql_error()); // THIS WILL NEED TO CHANGE
