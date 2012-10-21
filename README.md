@@ -4,7 +4,7 @@ EECS-394---TechView
 Making Tech more accessible for all
 
 http://techview.herokuapp.com/
-
+http://ec2-107-20-111-184.compute-1.amazonaws.com/EECS-394---TechView/
 
 Team Member Contact Information:
 
