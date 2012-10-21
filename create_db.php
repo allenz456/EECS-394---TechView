@@ -26,13 +26,16 @@ $room_column6 = 'other_info';
 
 
 // Create the page table
-mysql_query('CREATE TABLE ' . $room_table_name . '(
-' . $room_column1 . ' ' . $room_column1_type . ', 
-' . $room_column2 . ' ' . $room_column2_type . ', 
-' . $room_column3 . ' ' . $room_column3_type . ', 
-' . $room_column4 . ' ' . $room_column4_type . ',
-' . $room_column5 . ' ' . $room_column5_type . ',
-' . $room_column6 . ' ' . $room_column6_type . ')');
+// mysql_query('CREATE TABLE ' . $room_table_name . '(
+// ' . $room_column1 . ' ' . $room_column1_type . ', 
+// ' . $room_column2 . ' ' . $room_column2_type . ', 
+// ' . $room_column3 . ' ' . $room_column3_type . ', 
+// ' . $room_column4 . ' ' . $room_column4_type . ',
+// ' . $room_column5 . ' ' . $room_column5_type . ',
+// ' . $room_column6 . ' ' . $room_column6_type . ')');
+
+
+	echo 'hi';
 
 
 ?>
