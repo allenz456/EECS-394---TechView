@@ -37,8 +37,9 @@ body, html
 #room_label_container
 {
 	/*display: none;*/
-	color: red;
-	font-size: .5em;
+	color: white;
+	font-weight: bold;
+	font-size: .7em;
 	/*position: absolute;*/
 	z-index: 20;
 }
@@ -46,6 +47,10 @@ body, html
 .room_label_divs
 {
 	position: absolute;
+	background: black;
+	padding: 5px;
+	box-shadow: 5px 5px 15px black;
+	border-radius: 5px;
 }
 
 #room_label_form
