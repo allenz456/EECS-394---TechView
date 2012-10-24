@@ -36,7 +36,7 @@
 </div>
 
 <!-- SELECT BUTTONS -->
-<span id='select_floor' style="display: inline;">
+<span id='select_floor' style="display: none;">
 	<!-- <div data-role="content">Select a floor:</div>
 	<div data-role="controlgroup">
 		<div class='floor_button' data-role="button" onclick='show_floor(0)'>Ground Floor</div>
@@ -47,7 +47,7 @@
 	</div> -->
 </span>
 
-<!-- <div id='slider'>
+<div id='slider'>
   <ul>
   	<li style='display:block'><img id="floor_map_0" width='95%' src='tech_maps/0.png'/></li>
     <li style='display:none'><img id="floor_map_1" width='95%' src='tech_maps/1.png'/></li>
@@ -55,7 +55,7 @@
     <li style='display:none'><img id="floor_map_3" width='95%' src='tech_maps/3.png'/></li>
     <li style='display:none'><img id="floor_map_4" width='95%' src='tech_maps/4.png'/></li>
   </ul>
-</div> -->
+</div>
 
 
 <div style='margin: 0px 20% 0px 20%'>
