@@ -51,6 +51,8 @@ body, html
 	padding: 5px;
 	box-shadow: 5px 5px 15px black;
 	border-radius: 5px;
+	/* Had to change this to get room labels to show up */
+	z-index: 20;
 }
 
 #room_label_form
