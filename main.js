@@ -79,6 +79,50 @@ function add_room_name(obj)
 	// document.getElementById('room_label').style.left = (room_coord_x+obj.offsetLeft) + 'px';
 }
 
+
+function add_direction(obj)
+{
+	// Get the position of the mouse relative to the page (different ways to do this depending on the browser you are using)
+	if (!e) var e = window.event;
+	if (e.pageX || e.pageY)
+	{
+		PosX = e.pageX;
+		PosY = e.pageY;
+	}
+	else if (e.clientX || e.clientY)
+	{
+		PosX = e.clientX + document.body.scrollLeft
+			+ document.documentElement.scrollLeft;
+		PosY = e.clientY + document.body.scrollTop
+			+ document.documentElement.scrollTop;
+	}
+	// Get the coordinate on the image that the mouse is over
+    var room_coord_y = PosY - obj.offsetTop;
+    var room_coord_x = PosX - obj.offsetLeft;
+	
+	document.getElementById('room_label_form').style.display = 'inline';
+	document.getElementById('room_label_form').style.top = (room_coord_y+obj.offsetTop) + 'px';
+	document.getElementById('room_label_form').style.left = (room_coord_x+obj.offsetLeft) + 'px';
+
+	document.getElementById('room_label_form').innerHTML = '\
+	<form method="POST" action="add_direction_to_database.php" method="POST" target="add_room_target" onsubmit="document.getElementById(&#39room_label_form&#39).style.display = &#39none&#39">\
+			Destination Name: <input type="textbox" name="destination_name"><br>\
+			Step Number: <input type="textbox" name="step_number"><br>\
+			Total Step Count: <input type="textbox" name="total_step_count"><br>\
+			Directions: <textarea rows="7" name="direction_text"></textarea><br>\
+			<input type="hidden" name="direction_coord_x" value="'+Math.round(room_coord_x/obj.offsetWidth*100)+'">\
+			<input type="hidden" name="direction_coord_y" value="'+Math.round(room_coord_y/obj.offsetHeight*100)+'">\
+			<input type="hidden" name="floor" value="'+floor+'">\
+			<input type="submit" value="Submit">\
+		</form>\
+		<iframe id="add_room_target" name="add_room_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>';
+
+	// document.getElementById('room_label').style.display = 'inline';
+	// document.getElementById('room_label').style.top = (room_coord_y+obj.offsetTop) + 'px';
+	// document.getElementById('room_label').style.left = (room_coord_x+obj.offsetLeft) + 'px';
+}
+
+
 function hide_label_containers()
 {
 	document.getElementById('room_label_container').style.display = 'none';

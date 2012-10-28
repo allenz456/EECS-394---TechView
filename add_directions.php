@@ -4,9 +4,10 @@
 	<title>TechView</title>
 
 <!-- CSS FILE -->
-<link type="text/css" rel="stylesheet" href="../main.css">
+<link type="text/css" rel="stylesheet" href="main.css">
 <!-- JAVASCRIPT FILE -->
-<script type="text/javascript" src="../main.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="slider.js"></script>
 
 <!-- JQuery Mobile -->
 <link rel="stylesheet" href="jquery_mobile/jquery.mobile-1.2.0.css" />
@@ -34,9 +35,15 @@
 	<div id='room_label_form'></div>
 </div>
 
+<span onclick='show_floor(0)' style='cursor: pointer; margin: 10px'>Floor 0</span>
+<span onclick='show_floor(1)' style='cursor: pointer; margin: 10px'>Floor 1</span>
+<span onclick='show_floor(2)' style='cursor: pointer; margin: 10px'>Floor 2</span>
+<span onclick='show_floor(3)' style='cursor: pointer; margin: 10px'>Floor 3</span>
+<span onclick='show_floor(4)' style='cursor: pointer; margin: 10px'>Floor 4</span>
+
 <!-- SELECT BUTTONS -->
 <!-- <span id='select_floor' style="display: none;"> -->
-<span id='select_floor'>
+<span id='select_floor' onclick='add_direction(this)'>
 	<!-- <div data-role="content">Select a floor:</div>
 	<div data-role="controlgroup">
 		<div class='floor_button' data-role="button" onclick='show_floor(0)'>Ground Floor</div>

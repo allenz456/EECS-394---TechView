@@ -63,4 +63,5 @@ body, html
 	border-style: solid;
 	padding: 10px;
 	font-size: .5em;
+	z-index: 20;
 }
