@@ -307,6 +307,32 @@ function get_directions_from_database()
     xmlHttp.send(null);
 }
 
+
+function show_directions(value)
+{
+	oldHTML = document.getElementById('search_container').innerHTML;
+	var directionString = '';
+	for(var direction_ii = 0; direction_ii < directions_list.data_ii.length; direction_ii++)
+	{
+		if(value.toLowerCase() == directions_list.data_ii[direction_ii].destination.toLowerCase())
+		{
+			directionString += directions_list.data_ii[direction_ii].step_number + '. ' + directions_list.data_ii[direction_ii].step_direction + "<br>";
+		}
+	}
+	// document.getElementById('search_container').innerHTML = directionString;
+	document.getElementById('search_container').innerHTML = directionString + '<br><br><span onclick="showSearch()">GO BACK</span>';
+
+	// oldHTML = document.getElementById('search_container').innerHTML;
+	// var foundDirectionArray = find_directions(value).split(",");
+	// var directionsToPrint = '';
+	// for (var ii = 0; ii < foundDirectionArray.length; ii++)
+	// {
+	// 	directionsToPrint += foundDirectionArray[ii] + " ";
+	// }
+	// var directionsHTML = "<FORM>" + directionsToPrint + "<br><INPUT TYPE='button' onclick='showSearch(oldHTML)' value='Go back'></FORM>";
+	// document.getElementById('search_container').innerHTML=directionsHTML;
+}
+
 function find_directions(targetDestination){
 
 	var directionString = '';
@@ -321,7 +347,7 @@ function find_directions(targetDestination){
 	directionString = directionString.substring(0, directionString.length - 1);
 	return directionString;
 }
-function show_directions(value)
+function show_directions2(value)
 {
 	oldHTML = document.getElementById('search_container').innerHTML;
 	var foundDirectionArray = find_directions(value).split(",");
@@ -334,7 +360,7 @@ function show_directions(value)
 	document.getElementById('search_container').innerHTML=directionsHTML;
 }
 
-function showSearch(oldHTML)
+function showSearch()
 {
 	document.getElementById('search_container').innerHTML = oldHTML;
 }
