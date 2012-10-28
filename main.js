@@ -12,7 +12,7 @@ function show_floor(floor_number)
 	// <div class='home_button ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c' data-role='button' onclick='display_room_labels()'>View Room Names</div>\
 	// <img id='floor_map' width='100%' onclick='add_room_name(this)' src='tech_maps/" + floor + ".png'/>";
 	document.getElementById('select_floor').innerHTML = "\
-	<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
+	<img id='floor_map' width='95%' src='tech_maps/" + floor + ".png'/>";
 	// <img id='floor_map' width='95%' onclick='add_room_name(this)' src='tech_maps/" + floor + ".png'/>";
 }
 
@@ -31,7 +31,9 @@ function load_function()
 	select_floor_string = document.getElementById('select_floor').innerHTML;
 	// Load all of the room_labels from the database
 	get_rooms_from_database();
-	// show_floor(1);
+	// Load all directions from database
+	get_directions_from_database();
+	show_floor(1);
 	// document.getElementById('room_input').focus();
 	// document.getElementById('room_input').select();
 }
@@ -107,59 +109,45 @@ function display_room_labels()
 
 function find_room(obj){
 
+	// document.getElementById('test').innerHTML = document.getElementById('room_input').value;
+	
 	var flag = 0;
 
 	var new_room_div;
 	var room_label_container = document.getElementById('room_label_container');
-	room_label_container.style.display = 'inline';
+	var floor_map_offset_y = document.getElementById('floor_map').offsetTop;
+	var floor_map_offset_x = document.getElementById('floor_map').offsetLeft;
+	var floor_map_offset_width = document.getElementById('floor_map').offsetWidth;
+	var floor_map_offset_height = document.getElementById('floor_map').offsetHeight;
+	document.getElementById('room_label_container').style.display = 'inline';
 	room_label_container.innerHTML = '';
+
 	var room_name = document.getElementById('room_input').value;
 
 	if(room_name == '')
 	{
-		// show_floor(1);
-		// *SWIPE* Changes swipe view when nothing is in search bar
-		new Swipe(document.getElementById('slider'), {startSlide: 1});
+		show_floor(1);
 		return;
 	}
 	for(var room_ii = 0; room_ii < room_labels.data_ii.length; room_ii++)
 	{
 		if(room_name.toLowerCase() == room_labels.data_ii[room_ii].room_name.toLowerCase())
 		{
-			// Assign the floor variable
-			floor = room_labels.data_ii[room_ii].floor;
-			// Change the image to the correct floor number, this will change the image id to floor_map_<FLOOR #>
-			// ...which we will need to get the position of below
-			// show_floor(floor);
-
-			// *SWIPE* Changes swipe view to floor of room being searched
-			new Swipe(document.getElementById('slider'), {startSlide: floor});
-
-			// Get the coordinates of the room to be searched for
-			var floor_map_offset_width = document.getElementById('floor_map_'+floor).offsetWidth;
-			var floor_map_offset_height = document.getElementById('floor_map_'+floor).offsetHeight;
-			var floor_map_offset_y = document.getElementById('floor_map_'+floor).offsetTop;
-			// The floor_map_offset_x must be adjusted for swipe mode to work (all images are in a long row, rather than replacing the image)
-			var floor_map_offset_x = document.getElementById('floor_map_'+floor).offsetLeft - (floor_map_offset_width+30)*floor;
-			// var floor_map_offset_x = document.getElementById('floor_map_'+floor).offsetLeft;
-
-			// Place the label on the map
+			// document.getElementById('test').innerHTML = 'hi';
 			new_room_div = "<div id='dbroomid_"+room_labels.data_ii[room_ii].db_room_id+"' class='room_label_divs'>"+room_labels.data_ii[room_ii].room_name+"</div>";
 			room_label_container.innerHTML = room_label_container.innerHTML + new_room_div;
 			document.getElementById('dbroomid_'+room_labels.data_ii[room_ii].db_room_id).style.top = (parseInt(room_labels.data_ii[room_ii].room_coord_y,10)/100*floor_map_offset_width+floor_map_offset_y)+'px';
 			document.getElementById('dbroomid_'+room_labels.data_ii[room_ii].db_room_id).style.left = (parseInt(room_labels.data_ii[room_ii].room_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x)+'px';
-
-			// If we found a room, flag it. Otherwise show first floor view
+			show_floor(room_labels.data_ii[room_ii].floor);
 			flag = 1
 			document.getElementById('room_input').unfocus();
-			document.getElementById('room_input').unselect();
+	document.getElementById('room_input').unselect();
 			document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
 		}
 	}
 	if(flag == 0)
 	{
-		// If room is not matched show first floor view. We may want to change this later.
-		// show_floor(1);
+		show_floor(1);
 	}
 }
 
@@ -235,4 +223,56 @@ function getXMLHttp()
     }
   }
   return xmlHttp;
+}
+
+
+var oldHTML;
+var directions_list;
+
+function get_directions_from_database()
+{
+	var xmlHttp = getXMLHttp();
+    xmlHttp.onreadystatechange = function()
+    {
+        if(xmlHttp.readyState == 4)
+        {
+            var directions_labels_string = xmlHttp.responseText;
+            directions_list = eval ("({'data_ii':" + directions_labels_string  + "})");
+        }
+    }
+
+    xmlHttp.open("GET", 'get_directions_from_database.php', true);
+    xmlHttp.send(null);
+}
+
+function find_directions(targetDestination){
+
+	var directionString = '';
+
+	for(var direction_ii = 0; direction_ii < directions_list.data_ii.length; direction_ii++)
+	{
+		if(targetDestination.toLowerCase() == directions_list.data_ii[direction_ii].destination.toLowerCase())
+		{
+			directionString += directions_list.data_ii[direction_ii].step_direction + ",";
+		}
+	}
+	directionString = directionString.substring(0, directionString.length - 1);
+	return directionString;
+}
+function show_directions(value)
+{
+	oldHTML = document.getElementById('search_container').innerHTML;
+	var foundDirectionArray = find_directions(value).split(",");
+	var directionsToPrint = '';
+	for (var ii = 0; ii < foundDirectionArray.length; ii++)
+	{
+		directionsToPrint += foundDirectionArray[ii] + " ";
+	}
+	var directionsHTML = "<FORM>" + directionsToPrint + "<br><INPUT TYPE='button' onclick='showSearch(oldHTML)' value='Go back'></FORM>";
+	document.getElementById('search_container').innerHTML=directionsHTML;
+}
+
+function showSearch(oldHTML)
+{
+	document.getElementById('search_container').innerHTML = oldHTML;
 }
