@@ -2,7 +2,7 @@ onload = load_function;
 
 var select_floor_string;
 var room_labels;
-var floor = 1;
+var floor;
 
 function show_floor(floor_number)
 {
@@ -356,15 +356,6 @@ function show_directions(value)
 	// document.getElementById('search_container').innerHTML = directionString;
 	document.getElementById('search_container').innerHTML = directionString + '<br><br><span onclick="showSearch()">GO BACK</span>';
 
-	// oldHTML = document.getElementById('search_container').innerHTML;
-	// var foundDirectionArray = find_directions(value).split(",");
-	// var directionsToPrint = '';
-	// for (var ii = 0; ii < foundDirectionArray.length; ii++)
-	// {
-	// 	directionsToPrint += foundDirectionArray[ii] + " ";
-	// }
-	// var directionsHTML = "<FORM>" + directionsToPrint + "<br><INPUT TYPE='button' onclick='showSearch(oldHTML)' value='Go back'></FORM>";
-	// document.getElementById('search_container').innerHTML=directionsHTML;
 }
 
 function find_directions(targetDestination){
