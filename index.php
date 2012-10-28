@@ -69,8 +69,10 @@
 <select  onchange= "show_directions(this.value)"  name="hotspots" style= "height: 8%;">
 <option id="select" value="selectthis" >Select from List</option>
 <option id= "A" value="techExpress" >Tech Express</option>
-<option id= "B" value="B" >Fake Room</option>
-<option id= "C" value="C" >Not real</option>
+<option id= "B" value="muddLibrary" >Mudd Library</option>
+<option id= "C" value="MG47" >MG47 (Computer Lab)</option>
+<option id= "C" value="fordBridge" >Bridge to Ford</option>
+<option id= "C" value="wilkLab" >Wilkinson Lab</option>
 
 </select>
 </form>
