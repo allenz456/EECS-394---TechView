@@ -2,7 +2,7 @@ onload = load_function;
 
 var select_floor_string;
 var room_labels;
-var floor;
+var floor = 1;
 
 function show_floor(floor_number)
 {
@@ -16,6 +16,40 @@ function show_floor(floor_number)
 	// <img id='floor_map' width='95%' src='tech_maps/" + floor + ".png'/>";
 	// <img id='floor_map' width='95%' onclick='add_room_name(this)' src='tech_maps/" + floor + ".png'/>";
 }
+
+function button_floor(floor_number)
+{
+	if(floor_number == 0)
+	{
+		if(floor == 0)
+		{
+			return;
+		}
+		else
+		{
+			floor -= 1;
+			document.getElementById('select_floor').innerHTML = "\
+			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
+			return floor;
+		}
+	}
+
+	if(floor_number == 1)
+	{
+		if(floor == 4)
+		{
+			return;
+		}
+		else
+		{
+			floor += 1;
+			document.getElementById('select_floor').innerHTML = "\
+			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
+			return floor;
+		}
+	}
+}
+
 
 function show_restroom(floor_number)
 {
