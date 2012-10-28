@@ -7,7 +7,6 @@
 <link type="text/css" rel="stylesheet" href="main.css">
 <!-- JAVASCRIPT FILE -->
 <script type="text/javascript" src="main.js"></script>
-<script type="text/javascript" src="slider.js"></script>
 
 <!-- JQuery Mobile -->
 <link rel="stylesheet" href="jquery_mobile/jquery.mobile-1.2.0.css" />
@@ -36,7 +35,7 @@
 </div>
 
 <!-- SELECT BUTTONS -->
-<span id='select_floor' style="display: none;">
+<span id='select_floor'>
 	<!-- <div data-role="content">Select a floor:</div>
 	<div data-role="controlgroup">
 		<div class='floor_button' data-role="button" onclick='show_floor(0)'>Ground Floor</div>
@@ -47,32 +46,23 @@
 	</div> -->
 </span>
 
-<div id='slider'>
-  <ul>
-  	<li style='display:block'><img id="floor_map_0" width='95%' src='tech_maps/0.png'/></li>
-    <li style='display:none'><img id="floor_map_1" width='95%' src='tech_maps/1.png'/></li>
-    <li style='display:none'><img id="floor_map_2" width='95%' src='tech_maps/2.png'/></li>
-    <li style='display:none'><img id="floor_map_3" width='95%' src='tech_maps/3.png'/></li>
-    <li style='display:none'><img id="floor_map_4" width='95%' src='tech_maps/4.png'/></li>
-  </ul>
-</div>
 
-
-<div style='margin: 0px 20% 0px 20%'>
+<div id= "search_container"style='margin: 0px 20% 0px 20%;'>
 	<!-- Search for a Room:<input id='room_input' type="text" onkeyup="find_room(this)" name="room_input" size="30" maxlength="50"> -->
 <input id='room_input' type="text" onkeyup="find_room(this)" name="room_input" size="30" maxlength="50" 
 	value="Search for a room here..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
+
+<form>
+<select  onchange= "show_directions(this.value)"  name="hotspots" style= "height: 8%;">
+<option id="select" value="selectthis" >Select from List</option>
+<option id= "A" value="techExpress" >Tech Express</option>
+<option id= "B" value="B" >Fake Room</option>
+<option id= "C" value="C" >Not real</option>
+
+</select>
+</form>
 </div>
 
 </div><!-- /page -->
-
-<script type="text/javascript">
-$("document").ready(function(){
-window.mySwipe = new Swipe(
-  document.getElementById('slider'), {
-    startSlide: 1}
-);});
-</script>
-
 </body>
 </html>
