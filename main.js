@@ -153,7 +153,7 @@ function find_room(obj){
 			flag = 1
 			document.getElementById('room_input').unfocus();
 			document.getElementById('room_input').unselect();
-			document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
+			// document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
 		}
 	}
 	if(flag == 0)
