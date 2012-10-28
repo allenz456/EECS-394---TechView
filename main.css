@@ -10,6 +10,8 @@ body, html
 	text-align: center;
 	height: 20%;
 	margin: 5px;
+	z-index: 50;
+	position: absolute;
 }
 
 #body_div

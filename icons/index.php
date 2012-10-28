@@ -35,16 +35,17 @@
 	<div id='room_label_form'></div>
 </div>
 
-<div data-role="content">Select a floor:</div>
-	<div data-role="controlgroup">
-		<div id='left_floor_button' class='floor_button' data-role="button" onclick='button_floor(0)'><img src='icons/left_button.png'/></div>
-		<div id='right_floor_button' class='floor_button' data-role="button" onclick='button_floor(1)'><img src='icons/right_button.png'/></div>
-	</div>
-
 <!-- SELECT BUTTONS -->
 <!-- <span id='select_floor' style="display: none;"> -->
 <span id='select_floor'>
-	
+	<!-- <div data-role="content">Select a floor:</div>
+	<div data-role="controlgroup">
+		<div class='floor_button' data-role="button" onclick='show_floor(0)'>Ground Floor</div>
+		<div class='floor_button' data-role="button" onclick='show_floor(1)'>First Floor</div>
+		<div class='floor_button' data-role="button" onclick='show_floor(2)'>Second Floor</div>
+		<div class='floor_button' data-role="button" onclick='show_floor(3)'>Third Floor</div>
+		<div class='floor_button' data-role="button" onclick='show_floor(4)'>Fourth Floor</div>
+	</div> -->
 </span>
 
 <!-- <div id='slider'>
