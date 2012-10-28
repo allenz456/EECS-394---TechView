@@ -27,7 +27,8 @@ function button_floor(floor_number)
 		}
 		else
 		{
-			floor -= 1;
+			document.getElementById('room_label_container').style.display = 'none';
+			floor = parseInt(floor) - 1;
 			document.getElementById('select_floor').innerHTML = "\
 			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
 			return floor;
@@ -42,7 +43,8 @@ function button_floor(floor_number)
 		}
 		else
 		{
-			floor += 1;
+			document.getElementById('room_label_container').style.display = 'none';
+			floor = parseInt(floor) + 1;
 			document.getElementById('select_floor').innerHTML = "\
 			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
 			return floor;

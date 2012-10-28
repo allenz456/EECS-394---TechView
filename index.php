@@ -35,10 +35,10 @@
 	<div id='room_label_form'></div>
 </div>
 
-<div data-role="content">Select a floor:</div>
+<!-- <div data-role="content">Select a floor:</div> -->
 	<div data-role="controlgroup">
-		<div id='left_floor_button' class='floor_button' data-role="button" onclick='button_floor(0)'><img src='icons/left_button.png'/></div>
-		<div id='right_floor_button' class='floor_button' data-role="button" onclick='button_floor(1)'><img src='icons/right_button.png'/></div>
+		<div id='left_floor_button' class='left_floor_button'  onclick='button_floor(0)'><img src='icons/left_button.png'/></div>
+		<div id='right_floor_button' class='right_floor_button' onclick='button_floor(1)'><img src='icons/right_button.png'/></div>
 	</div>
 
 <!-- SELECT BUTTONS -->

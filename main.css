@@ -3,15 +3,38 @@ body, html
 	height: 95%;
 }
 
-.floor_button
+.left_floor_button
 {
-	color: black;
-	background-color: green;
-	text-align: center;
-	height: 20%;
+	/*color: black;*/
+	/*background-color: green;*/
+	/*text-align: center;*/
+	/*height: 20%;*/
 	margin: 5px;
-	z-index: 50;
+	z-index: 40;
+	/*position: absolute;*/
+	/*float:left;*/
+	width: 300px;
+	height: 20%;
 	position: absolute;
+	left: 0px;
+	top: 480px;
+}
+
+.right_floor_button
+{
+	/*color: black;*/
+	/*background-color: green;*/
+	/*text-align: center;*/
+	/*height: 20%;*/
+	margin: 5px;
+	z-index: 40;
+	/*position: absolute;*/
+	/*float:right;*/
+	width: 300px;
+	height: 20%;
+	position: absolute;
+	right: 0px;
+	top: 480px;
 }
 
 #body_div
