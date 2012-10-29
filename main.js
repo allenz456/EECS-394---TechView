@@ -347,6 +347,7 @@ function get_directions_from_database()
 function show_directions(value)
 {
 	oldHTML = document.getElementById('search_container').innerHTML;
+	document.getElementById('room_label_container').innerHTML = '';
 	var directionString = '';
 	for(var direction_ii = 0; direction_ii < directions_list.data_ii.length; direction_ii++)
 	{
@@ -355,39 +356,42 @@ function show_directions(value)
 			directionString += directions_list.data_ii[direction_ii].step_number + '. ' + directions_list.data_ii[direction_ii].step_direction + "<br>";
 		}
 	}
+		display_directions_labels(value);
+
 	// document.getElementById('search_container').innerHTML = directionString;
 	document.getElementById('search_container').innerHTML = directionString + '<br><br><span onclick="showSearch()">GO BACK</span>';
 
 }
 
-function find_directions(targetDestination){
-
-	var directionString = '';
-
-	for(var direction_ii = 0; direction_ii < directions_list.data_ii.length; direction_ii++)
-	{
-		if(targetDestination.toLowerCase() == directions_list.data_ii[direction_ii].destination.toLowerCase())
-		{
-			directionString += directions_list.data_ii[direction_ii].step_direction + ",";
-		}
-	}
-	directionString = directionString.substring(0, directionString.length - 1);
-	return directionString;
-}
-function show_directions2(value)
-{
-	oldHTML = document.getElementById('search_container').innerHTML;
-	var foundDirectionArray = find_directions(value).split(",");
-	var directionsToPrint = '';
-	for (var ii = 0; ii < foundDirectionArray.length; ii++)
-	{
-		directionsToPrint += foundDirectionArray[ii] + " ";
-	}
-	var directionsHTML = "<FORM>" + directionsToPrint + "<br><INPUT TYPE='button' onclick='showSearch(oldHTML)' value='Go back'></FORM>";
-	document.getElementById('search_container').innerHTML=directionsHTML;
-}
-
 function showSearch()
 {
+	document.getElementById('directions_label_container').innerHTML = '';
 	document.getElementById('search_container').innerHTML = oldHTML;
+}
+
+// Shows the labels of all of the directions in the database 
+// Probably used only for showing labesl for things that are all located on one floor
+// Input should be array containing all of the information associated with the destination being searched for 
+function display_directions_labels(value)
+{
+	var new_direction_div;
+	var direction_label_container = document.getElementById('directions_label_container');
+	var floor_map_offset_y = document.getElementById('floor_map_'+floor).offsetTop;
+	var floor_map_offset_x = document.getElementById('floor_map_'+floor).offsetLeft;
+	var floor_map_offset_width = document.getElementById('floor_map_'+floor).offsetWidth;
+	var floor_map_offset_height = document.getElementById('floor_map_'+floor).offsetHeight;
+	document.getElementById('directions_label_container').style.display = 'inline';
+	direction_label_container.innerHTML = '';
+
+	// Finds all rooms that equal to the floor
+	for (var dir_ii = 0; dir_ii < directions_list.data_ii.length; dir_ii++)
+	{
+		if(value.toLowerCase() == directions_list.data_ii[dir_ii].destination.toLowerCase())
+		{
+			new_direction_div = "<div id='directionStep_"+directions_list.data_ii[dir_ii].step_number+"' class='room_label_divs'>"+directions_list.data_ii[dir_ii].step_number+"</div>";
+			direction_label_container.innerHTML = direction_label_container.innerHTML + new_direction_div;
+			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.top = (parseInt((directions_list.data_ii[dir_ii].turn_coord_y)/41,10)/100*floor_map_offset_height+floor_map_offset_y)+'px';
+			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.left = (parseInt(directions_list.data_ii[dir_ii].turn_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x)+'px';
+		}
+	}
 }

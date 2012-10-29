@@ -30,6 +30,8 @@
 	<div id='label_container'>
 		<div id='room_label_container'></div>
 		<div id='room_label_form'></div>
+			<div id='directions_label_container'></div>
+
 	</div>
 
 	<div>
