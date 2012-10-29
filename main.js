@@ -28,6 +28,7 @@ function button_floor(floor_number)
 		else
 		{
 			document.getElementById('room_label_container').style.display = 'none';
+			document.getElementById('room_input').value = 'Search for a room here...';
 			floor = parseInt(floor) - 1;
 			document.getElementById('select_floor').innerHTML = "\
 			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
@@ -44,6 +45,7 @@ function button_floor(floor_number)
 		else
 		{
 			document.getElementById('room_label_container').style.display = 'none';
+			document.getElementById('room_input').value = 'Search for a room here...';
 			floor = parseInt(floor) + 1;
 			document.getElementById('select_floor').innerHTML = "\
 			<img id='floor_map_"+floor+"' width='95%' src='tech_maps/" + floor + ".png'/>";
@@ -201,13 +203,7 @@ function find_room(obj){
 	room_label_container.innerHTML = '';
 	var room_name = document.getElementById('room_input').value;
 
-	if(room_name == '')
-	{
-		show_floor(1);
-		// *SWIPE* Changes swipe view when nothing is in search bar
-		// new Swipe(document.getElementById('slider'), {startSlide: 1});
-		return;
-	}
+	
 	for(var room_ii = 0; room_ii < room_labels.data_ii.length; room_ii++)
 	{
 		if(room_name.toLowerCase() == room_labels.data_ii[room_ii].room_name.toLowerCase())
@@ -242,10 +238,29 @@ function find_room(obj){
 			document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
 		}
 	}
+
+ 
 	if(flag == 0)
 	{
 		// If room is not matched show first floor view. We may want to change this later.
-		show_floor(1);
+		//show_floor(1);
+		if(room_name == null)
+		{
+		show_floor(floor);
+		document.getElementById('label_container').style.display = 'none';
+		return;
+		}
+		else
+		{
+		show_floor(floor);
+			new_room_div = "<div id='room_not_found' class='room_label_divs'>Room Not Found</div>";
+			room_label_container.innerHTML = room_label_container.innerHTML + new_room_div;
+
+			//document.getElementById('room_not_found').style.top = 100'px';
+			//document.getElementById('room_not_found').style.left = 100'px';
+		return;
+		}
+
 	}
 }
 
