@@ -247,7 +247,7 @@ function find_room(obj){
 		if(room_name == '')
 		{
 		show_floor(floor);
-		document.getElementById('label_container').style.display = 'none';
+		document.getElementById('room_label_container').style.display = 'none';
 		return;
 		}
 		else
