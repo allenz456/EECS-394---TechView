@@ -15,11 +15,11 @@ body, html
 	z-index: 40;
 	/*position: absolute;*/
 	/*float:left;*/
-	width: 300px;
+	width: 100px;
 	height: 20%;
 	position: absolute;
 	left: 0px;
-	top: 480px;
+	bottom: 20px;
 }
 
 .right_floor_button
@@ -32,11 +32,11 @@ body, html
 	z-index: 40;
 	/*position: absolute;*/
 	/*float:right;*/
-	width: 300px;
+	width: 100px;
 	height: 20%;
 	position: absolute;
 	right: 0px;
-	top: 480px;
+	bottom: 20px;
 }
 
 #body_div
