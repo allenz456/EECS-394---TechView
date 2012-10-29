@@ -80,18 +80,18 @@ START THREE MAIN SECTIONS
 
 .selection_div input{
 	background: transparent;
-	width: 100%;
+	width: 90%;
 	height: 40px;
 	padding: 15px;
-	font-size: 100%;
+	font-size: 95%;
 }
 
 .selection_div select {
 	background: white;
-	width: 100%;
+	width: 90%;
 	height: 70px; /*needs to be input height + input padding * 2
 	/*padding: 15px;*/
-	font-size: 100%;
+	font-size: 95%;
 }
 
 /**********************
@@ -120,7 +120,7 @@ END THREE MAIN SECTIONS
 .room_label_divs
 {
 	position: absolute;
-	background: black;
+	background: red;
 	padding: 5px;
 	box-shadow: 5px 5px 15px black;
 	border-radius: 5px;
