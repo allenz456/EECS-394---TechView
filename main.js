@@ -244,7 +244,7 @@ function find_room(obj){
 	{
 		// If room is not matched show first floor view. We may want to change this later.
 		//show_floor(1);
-		if(room_name == null)
+		if(room_name == '')
 		{
 		show_floor(floor);
 		document.getElementById('label_container').style.display = 'none';
