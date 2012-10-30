@@ -1,6 +1,8 @@
 <?php
 
 
+// CHANGE THIS VALUE TO ENTER DIFFERENT ICONS INTO DATABASE!!!!!
+// **********************
 $icon_name = "bathroom";
 $x_coord = $_REQUEST['x_coord'];
 $y_coord = $_REQUEST['y_coord'];
