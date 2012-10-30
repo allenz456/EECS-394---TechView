@@ -80,7 +80,7 @@ function load_function()
 	// show_floor(1);
 	// Load all directions from database
 	get_directions_from_database();
-	show_floor(1);
+	// show_floor(1);
 	// document.getElementById('room_input').focus();
 	// document.getElementById('room_input').select();
 }
@@ -257,7 +257,23 @@ function find_room(obj){
 			floor = room_labels.data_ii[room_ii].floor;
 			// Change the image to the correct floor number, this will change the image id to floor_map_<FLOOR #>
 			// ...which we will need to get the position of below
-			show_floor(floor);
+			// show_floor(floor);
+			// document.getElementById('test').innerHTML = mySwipe.getPos() + "<br>" + floor;
+			var current_floor = mySwipe.getPos();
+			if(current_floor < floor)
+			{
+				for (var step_ii = 0; step_ii < floor - current_floor; step_ii++)
+				{
+					mySwipe.next();
+				}
+			}
+			else if(current_floor > floor)
+			{
+				for (var step_ii = 0; step_ii < current_floor - floor; step_ii++)
+				{
+					mySwipe.prev();
+				}
+			}
 
 			// *SWIPE* Changes swipe view to floor of room being searched
 			// new Swipe(document.getElementById('slider'), {startSlide: floor});
@@ -274,13 +290,13 @@ function find_room(obj){
 			new_room_div = "<div id='dbroomid_"+room_labels.data_ii[room_ii].db_room_id+"' class='room_label_divs'>"+room_labels.data_ii[room_ii].room_name+"</div>";
 			room_label_container.innerHTML = room_label_container.innerHTML + new_room_div;
 			document.getElementById('dbroomid_'+room_labels.data_ii[room_ii].db_room_id).style.top = (parseInt(room_labels.data_ii[room_ii].room_coord_y,10)/100*floor_map_offset_width+floor_map_offset_y)+'px';
-			document.getElementById('dbroomid_'+room_labels.data_ii[room_ii].db_room_id).style.left = (parseInt(room_labels.data_ii[room_ii].room_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x)+'px';
+			document.getElementById('dbroomid_'+room_labels.data_ii[room_ii].db_room_id).style.left = (parseInt(room_labels.data_ii[room_ii].room_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x-window.document.body.clientWidth*floor)+'px';
 
 			// If we found a room, flag it. Otherwise show first floor view
 			flag = 1
 			document.getElementById('room_input').unfocus();
 			document.getElementById('room_input').unselect();
-			document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
+			// document.getElementById('body_div').setAttribute("style","-webkit-transform: scale(1.0);");
 		}
 	}
 
@@ -288,16 +304,29 @@ function find_room(obj){
 	if(flag == 0)
 	{
 		// If room is not matched show first floor view. We may want to change this later.
-		//show_floor(1);
 		if(room_name == '')
 		{
-		show_floor(floor);
+		var current_floor = mySwipe.getPos();
+		if(current_floor < 1)
+		{
+			for (var step_ii = 0; step_ii < 1 - current_floor; step_ii++)
+			{
+				mySwipe.next();
+			}
+		}
+		else if(current_floor > 1)
+		{
+			for (var step_ii = 0; step_ii < current_floor - 1; step_ii++)
+			{
+				mySwipe.prev();
+			}
+		}
 		document.getElementById('room_label_container').style.display = 'none';
 		return;
 		}
 		else
 		{
-		show_floor(floor);
+		// show_floor(floor);
 			new_room_div = "<div id='room_not_found' class='room_label_divs'>Room Not Found</div>";
 			room_label_container.innerHTML = room_label_container.innerHTML + new_room_div;
 

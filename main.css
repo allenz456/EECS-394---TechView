@@ -22,6 +22,10 @@ body, html
 	bottom: -25px;
 }
 
+ul, menu, dir {
+	-webkit-padding-start: 0px;
+}
+
 .right_floor_button
 {
 	/*color: black;*/
