@@ -17,6 +17,13 @@ function show_floor(floor_number)
 	// <img id='floor_map' width='95%' onclick='add_room_name(this)' src='tech_maps/" + floor + ".png'/>";
 }
 
+function show_floor2(floor_number)
+{
+	floor = floor_number;
+	document.getElementById('select_floor').innerHTML = "\
+	<img id='floor_map_"+floor+"' width='95%' onclick='add_icons(this)' src='tech_maps/" + floor + ".png'/>";
+}
+
 function button_floor(floor_number)
 {
 	if(floor_number == 0)
@@ -160,6 +167,44 @@ function add_direction(obj)
 	// document.getElementById('room_label').style.left = (room_coord_x+obj.offsetLeft) + 'px';
 }
 
+
+function add_icons(obj,icon)
+{
+	// Get the position of the mouse relative to the page (different ways to do this depending on the browser you are using)
+	if (!e) var e = window.event;
+	if (e.pageX || e.pageY)
+	{
+		PosX = e.pageX;
+		PosY = e.pageY;
+	}
+	else if (e.clientX || e.clientY)
+	{
+		PosX = e.clientX + document.body.scrollLeft
+			+ document.documentElement.scrollLeft;
+		PosY = e.clientY + document.body.scrollTop
+			+ document.documentElement.scrollTop;
+	}
+	// Get the coordinate on the image that the mouse is over
+    var room_coord_y = PosY - obj.offsetTop;
+    var room_coord_x = PosX - obj.offsetLeft;
+	
+	document.getElementById('room_label_form').style.display = 'inline';
+	document.getElementById('room_label_form').style.top = (room_coord_y+obj.offsetTop) + 'px';
+	document.getElementById('room_label_form').style.left = (room_coord_x+obj.offsetLeft) + 'px';
+
+	document.getElementById('room_label_form').innerHTML = '\
+	<form method="POST" action="add_icon_to_db.php" method="POST" target="add_room_target" onsubmit="document.getElementById(&#39room_label_form&#39).style.display = &#39none&#39">\
+			<input type="hidden" name="x_coord" value="'+Math.round(room_coord_x/obj.offsetWidth*100)+'">\
+			<input type="hidden" name="y_coord" value="'+Math.round(room_coord_y/obj.offsetHeight*100)+'">\
+			<input type="hidden" name="floor" value="'+floor+'">\
+			<input type="submit" value="Submit">\
+		</form>\
+		<iframe id="add_room_target" name="add_room_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>';
+
+	// document.getElementById('room_label').style.display = 'inline';
+	// document.getElementById('room_label').style.top = (room_coord_y+obj.offsetTop) + 'px';
+	// document.getElementById('room_label').style.left = (room_coord_x+obj.offsetLeft) + 'px';
+}
 
 function hide_label_containers()
 {
