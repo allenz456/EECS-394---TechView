@@ -259,7 +259,12 @@ Swipe.prototype = {
 
     // if not scrolling vertically
     if (!this.isScrolling) {
+      if(isValidSlide &&!isPastBounds)
+      {
+        document.getElementById('room_label_container').innerHTML = 'hi';
+        document.getElementById('room_input').value = 'Search for a room here...';
 
+      }
       // call slide function with slide end value based on isValidSlide and isPastBounds tests
       this.slide( this.index + ( isValidSlide && !isPastBounds ? (this.deltaX < 0 ? 1 : -1) : 0 ), this.speed );
 
