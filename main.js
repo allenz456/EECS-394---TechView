@@ -80,6 +80,7 @@ function load_function()
 	// show_floor(1);
 	// Load all directions from database
 	get_directions_from_database();
+	floor = 1;
 	// show_floor(1);
 	// document.getElementById('room_input').focus();
 	// document.getElementById('room_input').select();
@@ -445,7 +446,7 @@ function show_directions(value)
 			directionString += directions_list.data_ii[direction_ii].step_number + '. ' + directions_list.data_ii[direction_ii].step_direction + "<br>";
 		}
 	}
-		display_directions_labels(value);
+	display_directions_labels(value);
 
 	// document.getElementById('search_container').innerHTML = directionString;
 	document.getElementById('search_container').innerHTML = directionString + '<br><br><span onclick="showSearch()">GO BACK</span>';
@@ -480,7 +481,7 @@ function display_directions_labels(value)
 			new_direction_div = "<div id='directionStep_"+directions_list.data_ii[dir_ii].step_number+"' class='room_label_divs'>"+directions_list.data_ii[dir_ii].step_number+"</div>";
 			direction_label_container.innerHTML = direction_label_container.innerHTML + new_direction_div;
 			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.top = (parseInt((directions_list.data_ii[dir_ii].turn_coord_y)/41,10)/100*floor_map_offset_height+floor_map_offset_y)+'px';
-			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.left = (parseInt(directions_list.data_ii[dir_ii].turn_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x)+'px';
+			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.left = (parseInt(directions_list.data_ii[dir_ii].turn_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x-window.document.body.clientWidth*floor)+'px';
 		}
 	}
 }

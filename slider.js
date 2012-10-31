@@ -261,8 +261,12 @@ Swipe.prototype = {
     if (!this.isScrolling) {
       if(isValidSlide &&!isPastBounds)
       {
-        document.getElementById('room_label_container').innerHTML = 'hi';
-        document.getElementById('room_input').value = 'Search for a room here...';
+        if(document.getElementById('room_label_container').innerHTML != '')
+        {
+          document.getElementById('room_input').value = 'Search for a room here...';
+        }
+        document.getElementById('room_label_container').innerHTML = '';
+        document.getElementById('directions_label_container').innerHTML = '';
 
       }
       // call slide function with slide end value based on isValidSlide and isPastBounds tests
