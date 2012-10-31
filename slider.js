@@ -261,12 +261,17 @@ Swipe.prototype = {
     if (!this.isScrolling) {
       if(isValidSlide &&!isPastBounds)
       {
+        floor = this.index + ( isValidSlide && !isPastBounds ? (this.deltaX < 0 ? 1 : -1) : 0 );
         if(document.getElementById('room_label_container').innerHTML != '')
         {
           document.getElementById('room_input').value = 'Search for a room here...';
         }
         document.getElementById('room_label_container').innerHTML = '';
-        document.getElementById('directions_label_container').innerHTML = '';
+        if(document.getElementById('directions_label_container').innerHTML != '' || direction_label_token == 1)
+        {
+          display_directions_labels();
+        }
+        // document.getElementById('directions_label_container').innerHTML = '';
 
       }
       // call slide function with slide end value based on isValidSlide and isPastBounds tests
