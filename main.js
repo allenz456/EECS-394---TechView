@@ -465,15 +465,15 @@ function show_directions(value)
 		{
 			if( directionString == '')
 			{
-				directionString = "Directions to " + directions_list.data_ii[direction_ii].pretty_name + "<br><br>";
+				directionString = "<span style='font-size: 1.5em; font-weight: bold;'>Directions to " + directions_list.data_ii[direction_ii].pretty_name + "</span><br><br>";
 			}
-			directionString += directions_list.data_ii[direction_ii].step_number + '. ' + directions_list.data_ii[direction_ii].step_direction + "<br>";
+			directionString += '<b>' + directions_list.data_ii[direction_ii].step_number + '.</b> ' + directions_list.data_ii[direction_ii].step_direction + "<br><br>";
 		}
 	}
 	display_directions_labels();
 
 	// document.getElementById('search_container').innerHTML = directionString;
-	document.getElementById('search_container').innerHTML = directionString + '<br><br><span onclick="showSearch()">GO BACK</span><br><Br><br>';
+	document.getElementById('search_container').innerHTML = directionString + '<br><span id="home_button" onclick="showSearch()">MAIN MENU</span><br><Br><br>';
 }
 
 function showSearch()
@@ -506,8 +506,8 @@ function display_directions_labels()
 		{
 			new_direction_div = "<div id='directionStep_"+directions_list.data_ii[dir_ii].step_number+"' class='room_label_divs'>"+directions_list.data_ii[dir_ii].step_number+"</div>";
 			direction_label_container.innerHTML = direction_label_container.innerHTML + new_direction_div;
-			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.top = (parseInt((directions_list.data_ii[dir_ii].turn_coord_y)/41,10)/100*floor_map_offset_height+floor_map_offset_y)+'px';
-			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.left = (parseInt(directions_list.data_ii[dir_ii].turn_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x-window.document.body.clientWidth*floor)+'px';
+			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.top = (parseInt((directions_list.data_ii[dir_ii].turn_coord_y)/41,10)/100*floor_map_offset_height+floor_map_offset_y-document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).offsetHeight/2)+'px';
+			document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).style.left = (parseInt(directions_list.data_ii[dir_ii].turn_coord_x,10)/100*floor_map_offset_width+floor_map_offset_x-window.document.body.clientWidth*floor-document.getElementById('directionStep_'+directions_list.data_ii[dir_ii].step_number).offsetWidth/2)+'px';
 		}
 	}
 }

@@ -23,7 +23,7 @@
 <body id='body_div'>
 
 	<!-- HEADER -->
-	<div id='title'>Welcome to TechView!</div>
+	<div id='title'>TechView</div>
 
 	<div id='test'></div>
 

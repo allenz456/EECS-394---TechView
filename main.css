@@ -61,15 +61,15 @@ START THREE MAIN SECTIONS
 	background: black;
 }
 
-/*#select_floor
+#select_floor
 {
 
 }
 
 #search_container
 {
-
-}*/
+	margin: 0% 5% 0% 5%;
+}
 
 .selection_div
 {
@@ -104,8 +104,13 @@ END THREE MAIN SECTIONS
 
 #home_button
 {
-	height: 10%;
-	background-color: blue;
+	color: white;
+	font-weight: bold;
+	background: #9169a2;
+	padding-left: 10%;
+	padding-right: 10%;
+	box-shadow: 5px 5px 15px black;
+	border-radius: 10px;
 }
 
 
@@ -125,11 +130,13 @@ END THREE MAIN SECTIONS
 {
 	position: absolute;
 	color: white;
-	background: olive;
+	font-weight: bold;
+	font-size: 1.2em;
+	background: black;
 	/*border-style: solid;*/
 	/*border-color: yellow;*/
 	padding: 5px;
-	box-shadow: 5px 5px 15px black;
+	/*box-shadow: 5px 5px 15px black;*/
 	border-radius: 5px;
 	/* Had to change this to get room labels to show up */
 	z-index: 20;
