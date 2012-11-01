@@ -69,6 +69,21 @@ function show_restroom(floor_number)
   document.getElementById('select_floor').innerHTML = "<img width='100%' onclick='show_floor("+floor_number+")' src='tech_maps/" + floor_number + "b.png'/>";
 }
 
+function showToughRoomList()
+{
+	// ADD BELOW FOR FULL SCREEN SELECTION OF HARD TO FIND ROOMS
+	document.getElementById('slider').style.width = '100%';
+	document.getElementById('room_label_container').innerHTML = '';
+	document.getElementById('slider').style.display = 'none';
+	document.getElementById('search_container').style.display = 'none';
+	document.getElementById('select_floor').innerHTML = '<br><span style="font-size: 1.2em; font-weight: bold">Hard to Find Rooms</span>\
+			<div class="show_directions_button" onclick=show_directions("techExpress") >Tech Express</div>\
+			<div class="show_directions_button" onclick=show_directions("muddLibrary") >Mudd Library</div>\
+			<div class="show_directions_button" onclick=show_directions("MG47") >MG47 (Computer Lab)</div>\
+			<div class="show_directions_button" onclick=show_directions("fordBridge") >Bridge to Ford</div>\
+			<div class="show_directions_button" onclick=show_directions("wilkLab") >Wilkinson Lab</div>';
+}
+
 function load_home()
 {
 	document.getElementById('select_floor').innerHTML = select_floor_string;
@@ -438,6 +453,13 @@ function get_directions_from_database()
 
 function show_directions(value)
 {
+	// ADD BELOW FOR FULL SCREEN SELECTION OF HARD TO FIND ROOMS
+	document.getElementById('shadow_div').style.width = '0%';
+	document.getElementById('shadow_div').style.height = '0%';
+	document.getElementById('slider').style.display = 'inline-block';
+	document.getElementById('search_container').style.display = 'inline';
+	document.getElementById('select_floor').innerHTML = '';
+
 	floor = 1;
 	var current_floor = mySwipe.getPos();
 	if(current_floor < floor)

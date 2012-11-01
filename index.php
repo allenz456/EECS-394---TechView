@@ -21,6 +21,7 @@
 
 </head>
 <body id='body_div'>
+	<div id='shadow_div'></div>
 
 	<!-- HEADER -->
 	<div id='title'>TechView</div>
@@ -64,6 +65,12 @@
 			<input id='room_input' type="text" onkeyup="find_room(this)" name="room_input" size="30" maxlength="50" value="Search for a room here..." onfocus="if(this.value==this.defaultValue)this.value='';" onblur="if(this.value=='')this.value=this.defaultValue;">
 		</div>
 		<div class='selection_div'>
+			<div onclick='showToughRoomList();' style='background: transparent; width: 90%; height: 40px; padding: 15px; font-size: 95%; border-style: solid; border-color: silver; border-size: 1px; box-shadow: 2px 2px 5px black; border-radius: 15px;'>
+				Hard to find rooms
+			</div>
+		</div>
+
+<!-- 		<div class='selection_div' onclick='showToughRoomList();'>
 			<select onchange= "show_directions(this.value)" name="hotspots">
 			<option value="selectthis" >Hard to find rooms</option>
 			<option value="techExpress" >Tech Express</option>
@@ -71,7 +78,7 @@
 			<option value="MG47" >MG47 (Computer Lab)</option>
 			<option value="fordBridge" >Bridge to Ford</option>
 			<option value="wilkLab" >Wilkinson Lab</option>
-		<div>
+		<div> -->
 	</div>
 
 	<script type="text/javascript">
@@ -81,6 +88,7 @@
 	    startSlide: 1}
 	);});
 	</script>
+
 
 </body>
 </html>

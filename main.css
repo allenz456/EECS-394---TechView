@@ -1,7 +1,7 @@
 body, html
 {
 	margin: 0px;
-	height: 95%;
+	height: 100%;
 	font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -49,6 +49,23 @@ ul, menu, dir {
 	text-align: center;
 }
 
+#shadow_div
+{
+	position: fixed;
+	z-index: -1;
+}
+
+.show_directions_button
+{
+	height: 10%;
+	padding: 10px;
+	margin: 5%;
+	background: #EEE;
+	border-size: 1px;
+	box-shadow: 2px 2px 5px black;
+	border-radius: 15px;
+}
+
 /************************
 START THREE MAIN SECTIONS
 ************************/
@@ -88,6 +105,8 @@ START THREE MAIN SECTIONS
 	height: 40px;
 	padding: 15px;
 	font-size: 95%;
+	border-radius: 15px;
+	box-shadow: 2px 2px 5px black;
 }
 
 .selection_div select {
