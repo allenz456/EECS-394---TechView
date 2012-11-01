@@ -270,6 +270,10 @@ Swipe.prototype = {
         if(document.getElementById('directions_label_container').innerHTML != '' || direction_label_token == 1)
         {
           display_directions_labels();
+          if(direction_label_token == 1)
+            {
+              show_floor_directions();
+            }
         }
         // document.getElementById('directions_label_container').innerHTML = '';
 

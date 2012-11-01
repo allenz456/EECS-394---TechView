@@ -498,6 +498,31 @@ function show_directions(value)
 	document.getElementById('search_container').innerHTML = directionString + '<br><span id="home_button" onclick="showSearch()">MAIN MENU</span><br><Br><br>';
 }
 
+function show_floor_directions()
+{
+	value = destination;
+	var directionString = '';
+	for(var direction_ii = 0; direction_ii < directions_list.data_ii.length; direction_ii++)
+	{
+		if(value.toLowerCase() == directions_list.data_ii[direction_ii].destination.toLowerCase() && floor == directions_list.data_ii[direction_ii].other_info)
+		{
+			if( directionString == '')
+			{
+				directionString = "<span style='font-size: 1.5em; font-weight: bold;'>Directions to " + directions_list.data_ii[direction_ii].pretty_name + "</span><br><br>";
+			}
+			directionString += '<b>' + directions_list.data_ii[direction_ii].step_number + '.</b> ' + directions_list.data_ii[direction_ii].step_direction + "<br><br>";
+		}
+	}
+	if(directionString == '')
+	{
+		// directionString = "<span style='font-size: 1.5em; font-weight: bold;'>Directions to " + directions_list.data_ii[direction_ii].pretty_name + "</span><br><br>";
+		directionString = "Swipe to next floor.<br><br>";
+	}
+
+	// document.getElementById('search_container').innerHTML = directionString;
+	document.getElementById('search_container').innerHTML = directionString + '<br><span id="home_button" onclick="showSearch()">MAIN MENU</span><br><Br><br>';
+}
+
 function showSearch()
 {
 	direction_label_token = 0;
